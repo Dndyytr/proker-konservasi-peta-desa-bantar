@@ -7,6 +7,8 @@
   --color-gray: #6b7280;
   --color-bg: #f9fafb;
   --color-accent: #ff8c00;
+  --font-sans: "Poppins", sans-serif;
+  --font-serif: "Poppins", serif;
 }
 
 body {
@@ -143,6 +145,7 @@ body {
   line-height: 1.15;
   color: white;
   margin-bottom: 1.25rem;
+  font-weight: bold;
 }
 .hero-title span {
   background: linear-gradient(90deg, #f2c200, #ff8c00);
@@ -254,6 +257,9 @@ body {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  display: block !important;
+  visibility: visible !important;
 }
 
 /* ─── Custom Markers ─────────────────────────────── */
@@ -355,6 +361,23 @@ body {
 }
 .popup-detail-btn:hover {
   background: #3a2266;
+}
+.popup-maps-btn {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(135deg, #f2c200, #e6b800);
+  color: #1a0d35;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--font-sans);
+}
+.popup-maps-btn:hover {
+  opacity: 0.9;
 }
 
 /* ─── Sidebar ────────────────────────────────────── */
@@ -742,7 +765,20 @@ footer {
   height: 500px;
   background: #f3f4f6;
   border-radius: 12px;
+  position: relative;
+  z-index: 2;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
 }
+
+#map-loading.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  display: none !important;
+}
+
 .spinner {
   width: 36px;
   height: 36px;
@@ -757,6 +793,62 @@ footer {
   }
 }
 
+/* ─── Desa Label ─────────────────────────────────── */
+.desa-label {
+  background: rgba(75, 46, 131, 0.85);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.4;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+.desa-label span {
+  font-size: 0.65rem;
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+/* ─── Coords Bar ─────────────────────────────────── */
+.modal-coords-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 1rem;
+  font-size: 0.78rem;
+  color: var(--color-gray);
+  flex-wrap: wrap;
+}
+.modal-coords-bar code {
+  font-family: "Courier New", monospace;
+  color: var(--color-primary);
+  font-weight: 600;
+  flex: 1;
+}
+.copy-coords-btn {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 5px;
+  padding: 3px 8px;
+  font-size: 0.72rem;
+  cursor: pointer;
+  color: var(--color-gray);
+  transition: all 0.2s;
+  font-family: var(--font-sans);
+  white-space: nowrap;
+}
+.copy-coords-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
 /* ─── Responsive ─────────────────────────────────── */
 @media (max-width: 768px) {
   #map {

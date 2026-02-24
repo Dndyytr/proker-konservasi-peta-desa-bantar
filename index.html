@@ -2,10 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo_cilacap.png" />
-    <link rel="stylesheet" href="/src/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Peta Potensi Desa Bantar</title>
+    <!-- favicon -->
+    <link rel="icon" type="image/svg+xml" href="/logo_cilacap.png" />
+    <!-- css -->
+    <link rel="stylesheet" href="/src/style.css" />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="min-h-screen">
     <!-- ═══════════════════════════════════════════════════ -->
@@ -16,7 +25,7 @@
         <!-- Logo + Title -->
         <a
           href="#"
-          class="flex items-center gap-3 flex-shrink-0"
+          class="flex items-center gap-3 shrink-0"
           aria-label="Beranda Peta Potensi Desa Bantar"
         >
           <!-- Logo placeholder (ganti dengan logo asli) -->
@@ -179,8 +188,8 @@
             <p class="hero-sub">
               Sistem Informasi Geografis potensi desa berbasis komunitas yang
               dikembangkan oleh mahasiswa KKN Universitas Galuh. Temukan aset,
-              sumber daya, dan peluang pembangunan Desa Bantar, Cijulang,
-              Pangandaran.
+              sumber daya, dan peluang pembangunan Desa Bantar, Kecamatan
+              Wanareja, Kabupaten Cilacap, Jawa Tengah.
             </p>
 
             <div class="flex flex-wrap gap-3">
@@ -224,11 +233,11 @@
 
             <div class="hero-stats">
               <div>
-                <div class="hero-stat-num">5</div>
+                <div class="hero-stat-num">7</div>
                 <div class="hero-stat-label">Lokasi Terpetakan</div>
               </div>
               <div>
-                <div class="hero-stat-num">5</div>
+                <div class="hero-stat-num">7</div>
                 <div class="hero-stat-label">Kategori Potensi</div>
               </div>
               <div>
@@ -246,9 +255,7 @@
           <span class="text-white text-xs tracking-widest uppercase"
             >Scroll</span
           >
-          <div
-            class="w-px h-10 bg-gradient-to-b from-white to-transparent"
-          ></div>
+          <div class="w-px h-10 bg-linear-to-b from-white to-transparent"></div>
         </div>
       </section>
 
@@ -413,9 +420,9 @@
               </h2>
               <p class="text-base leading-relaxed mb-4" style="color: #374151">
                 Program Kuliah Kerja Nyata (KKN) Universitas Galuh di Desa
-                Bantar, Kecamatan Cijulang, Kabupaten Pangandaran merupakan
-                wujud nyata Tri Dharma Perguruan Tinggi dalam bidang pengabdian
-                kepada masyarakat.
+                Bantar, Kecamatan Wanareja, Kabupaten Cilacap merupakan wujud
+                nyata Tri Dharma Perguruan Tinggi dalam bidang pengabdian kepada
+                masyarakat.
               </p>
               <p class="text-base leading-relaxed mb-6" style="color: #374151">
                 Salah satu luaran program ini adalah
@@ -445,7 +452,7 @@
                     color: var(--color-accent);
                   "
                 >
-                  <span>📍</span> Desa Bantar, Pangandaran
+                  <span>📍</span> Desa Bantar, Wanareja, Cilacap
                 </div>
                 <div
                   class="flex items-center gap-2 text-sm px-4 py-2 rounded-lg"
@@ -557,7 +564,8 @@
               Peta Potensi Desa Bantar
             </div>
             <div class="text-xs" style="color: rgba(255, 255, 255, 0.45)">
-              KKN Universitas Galuh · Desa Bantar, Cijulang, Pangandaran · 2026
+              KKN Universitas Galuh · Desa Bantar, Wanareja, Cilacap, Jawa
+              Tengah · 2026
             </div>
           </div>
           <div class="flex items-center gap-3">
@@ -612,27 +620,5 @@
     </div>
 
     <script type="module" src="/src/main.js"></script>
-    <script>
-      // Show map after Leaflet loads
-      document.addEventListener("DOMContentLoaded", () => {
-        setTimeout(() => {
-          const loading = document.getElementById("map-loading");
-          const mapEl = document.getElementById("map");
-          if (loading && mapEl) {
-            loading.classList.add("hidden");
-            mapEl.classList.remove("hidden");
-          }
-        }, 300);
-
-        // Update list count badge dynamically
-        const observer = new MutationObserver(() => {
-          const cards = document.querySelectorAll(".loc-card");
-          const badge = document.getElementById("list-count-badge");
-          if (badge) badge.textContent = `${cards.length} lokasi`;
-        });
-        const list = document.getElementById("location-list");
-        if (list) observer.observe(list, { childList: true });
-      });
-    </script>
   </body>
 </html>

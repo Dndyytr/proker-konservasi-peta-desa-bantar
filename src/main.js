@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 
 // ============================================================
 // Peta Potensi Desa Bantar – KKN Universitas Galuh
+// Desa Bantar, Kecamatan Wanareja, Kabupaten Cilacap, Jawa Tengah
 // app.js – Vanilla JS Application
 // ============================================================
 
@@ -23,10 +24,12 @@ const state = {
 // ─── Category Config ─────────────────────────────────────────
 const CATEGORY_CONFIG = {
   Pemerintahan: { color: "#4B2E83", bg: "#EDE9FF", icon: "🏛️" },
-  "Sumber Daya Alam": { color: "#065F46", bg: "#D1FAE5", icon: "🌿" },
-  UMKM: { color: "#FF8C00", bg: "#FFF3CD", icon: "🧺" },
-  Pendidikan: { color: "#1D4ED8", bg: "#DBEAFE", icon: "📚" },
-  Pertanian: { color: "#15803D", bg: "#DCFCE7", icon: "🌾" },
+  "Fasilitas Umum": { color: "#1D4ED8", bg: "#DBEAFE", icon: "⚽" },
+  "Wisata Alam": { color: "#065F46", bg: "#D1FAE5", icon: "🌊" },
+  "Sumber Daya Alam": { color: "#0369A1", bg: "#E0F2FE", icon: "🏞️" },
+  Pertanian: { color: "#15803D", bg: "#DCFCE7", icon: "🌿" },
+  Pendidikan: { color: "#7C3AED", bg: "#F3E8FF", icon: "📚" },
+  "Fasilitas Ibadah": { color: "#B45309", bg: "#FEF3C7", icon: "🕌" },
 };
 
 function getCatConfig(category) {
@@ -45,46 +48,79 @@ function formatDate(dateStr) {
   });
 }
 
-function slugify(str) {
-  return str
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "");
-}
-
 // ─── Fetch Data ───────────────────────────────────────────────
 async function fetchLocations() {
   try {
     const res = await fetch("public/data/locations.json");
     if (!res.ok) throw new Error("Failed to fetch");
-    const data = await res.json();
-    state.locations = data;
-    state.filtered = data;
-    return data;
+    return await res.json();
   } catch (err) {
-    console.warn("Fetch gagal, menggunakan data fallback:", err);
-    // Fallback jika fetch gagal (misal file:// protocol)
+    console.warn("Fetch gagal:", err);
     return [];
   }
 }
 
 // ─── MAP ─────────────────────────────────────────────────────
+// Center: Desa Bantar, Kec. Wanareja, Kab. Cilacap, Jawa Tengah
 function initMap() {
   state.map = L.map("map", {
-    center: [-7.7108, 108.4875],
+    center: [-7.363821923689967, 108.71252156955266],
     zoom: 14,
     zoomControl: false,
   });
 
   L.control.zoom({ position: "bottomright" }).addTo(state.map);
 
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution:
-      '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    maxZoom: 19,
-  }).addTo(state.map);
+  // Layer OSM default
+  const osmLayer = L.tileLayer(
+    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    {
+      attribution:
+        '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 19,
+    },
+  );
+
+  // Layer Satellite (Esri)
+  const satelliteLayer = L.tileLayer(
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    {
+      attribution:
+        "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+      maxZoom: 19,
+    },
+  );
+
+  osmLayer.addTo(state.map);
+
+  // Layer control
+  L.control
+    .layers(
+      { "🗺️ Peta Jalan": osmLayer, "🛰️ Citra Satelit": satelliteLayer },
+      {},
+      { position: "topright", collapsed: false },
+    )
+    .addTo(state.map);
+
+  // Desa Bantar boundary label
+  addDesaLabel();
 
   setTimeout(() => state.map.invalidateSize(), 200);
+}
+
+function addDesaLabel() {
+  // Permanent label for desa name
+  const icon = L.divIcon({
+    html: `<div class="desa-label">Desa Bantar<br/><span>Kec. Wanareja, Kab. Cilacap</span></div>`,
+    className: "",
+    iconSize: [180, 40],
+    iconAnchor: [90, 20],
+  });
+  L.marker([-7.363821923689967, 108.71252156955266], {
+    icon,
+    interactive: false,
+    zIndexOffset: -1000,
+  }).addTo(state.map);
 }
 
 function createCustomIcon(category) {
@@ -105,13 +141,11 @@ function createCustomIcon(category) {
 }
 
 function renderMarkers(locations) {
-  // Clear existing
   Object.values(state.markers).forEach((m) => m.remove());
   state.markers = {};
 
   locations.forEach((loc) => {
     const icon = createCustomIcon(loc.category);
-    const cfg = getCatConfig(loc.category);
     const marker = L.marker([loc.lat, loc.lng], { icon })
       .addTo(state.map)
       .bindPopup(createPopupContent(loc), {
@@ -119,9 +153,7 @@ function renderMarkers(locations) {
         className: "custom-popup",
       });
 
-    marker.on("click", () => {
-      highlightCard(loc.slug);
-    });
+    marker.on("click", () => highlightCard(loc.slug));
 
     marker.getPopup().on("add", () => {
       const btn = document.querySelector(
@@ -144,8 +176,11 @@ function createPopupContent(loc) {
       </div>
       <div class="popup-body">
         <h3>${loc.name}</h3>
-        <p>${loc.description.slice(0, 90)}…</p>
-        <button class="popup-detail-btn" data-slug="${loc.slug}">Lihat Detail →</button>
+        <p>📍 ${loc.address.split(",").slice(0, 2).join(", ")}</p>
+        <div style="display:flex;gap:6px;margin-top:8px;">
+          <button class="popup-detail-btn" data-slug="${loc.slug}">📋 Detail</button>
+          <a href="${loc.mapsUrl}" target="_blank" rel="noopener" class="popup-maps-btn">🗺️ Maps</a>
+        </div>
       </div>
     </div>
   `;
@@ -189,6 +224,10 @@ function renderList(locations) {
     `;
     })
     .join("");
+
+  // Update badge count
+  const badge = document.getElementById("list-count-badge");
+  if (badge) badge.textContent = `${locations.length} lokasi`;
 }
 
 function handleCardClick(slug) {
@@ -308,6 +347,11 @@ function openModal(slug) {
           </div>
         </div>
       </div>
+      <div class="modal-coords-bar">
+        <span>🌐 Koordinat GPS:</span>
+        <code>${loc.lat}, ${loc.lng}</code>
+        <button class="copy-coords-btn" onclick="navigator.clipboard.writeText('${loc.lat},${loc.lng}').then(()=>{this.textContent='✅ Disalin!'});setTimeout(()=>{this.textContent='📋 Salin'},2000)" title="Salin koordinat">📋 Salin</button>
+      </div>
       <div class="modal-actions">
         <a href="${loc.mapsUrl}" target="_blank" rel="noopener" class="btn-maps">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -315,7 +359,7 @@ function openModal(slug) {
         </a>
         <button class="btn-navigate" onclick="navigateTo(${loc.lat},${loc.lng},'${loc.slug}')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-          Navigasi
+          Tampilkan di Peta
         </button>
       </div>
     </div>
@@ -327,7 +371,6 @@ function openModal(slug) {
     modal.querySelector(".modal-box").classList.add("modal-enter");
   });
 
-  // Hash routing
   history.pushState(null, "", `#lokasi=${slug}`);
   document.body.style.overflow = "hidden";
 }
@@ -351,11 +394,13 @@ window.closeModal = closeModal;
 window.handleCardClick = handleCardClick;
 
 window.navigateTo = function (lat, lng, slug) {
-  state.map.flyTo([lat, lng], 17, { animate: true, duration: 1 });
   closeModal();
   setTimeout(() => {
-    if (state.markers[slug]) state.markers[slug].openPopup();
-  }, 1200);
+    state.map.flyTo([lat, lng], 17, { animate: true, duration: 1 });
+    setTimeout(() => {
+      if (state.markers[slug]) state.markers[slug].openPopup();
+    }, 1200);
+  }, 250);
 };
 
 // ─── HASH ROUTING ─────────────────────────────────────────────
@@ -387,14 +432,13 @@ function initNavbar() {
       : `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
   });
 
-  // Scroll header shrink
   const header = document.getElementById("main-header");
   window.addEventListener("scroll", () => {
     header.classList.toggle("header-scrolled", window.scrollY > 60);
   });
 }
 
-// ─── KEYBOARD ─────────────────────────────────────────────────
+// ─── KEYBOARD / BACKDROP ──────────────────────────────────────
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     const modal = document.getElementById("detail-modal");
@@ -402,13 +446,11 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// Backdrop click
 document.addEventListener("click", (e) => {
   const modal = document.getElementById("detail-modal");
   if (e.target === modal) closeModal();
 });
 
-// ─── SCROLL TO MAP ────────────────────────────────────────────
 window.scrollToMap = function () {
   document.getElementById("peta").scrollIntoView({ behavior: "smooth" });
 };
@@ -421,20 +463,47 @@ async function init() {
 
   const locations = await fetchLocations();
 
-  // Fallback data jika fetch gagal
   if (!locations.length) {
     document.getElementById("map-loading").innerHTML = `
-      <p style="color:#6B7280;font-size:0.875rem;">⚠️ Data tidak dapat dimuat. Pastikan server berjalan dengan benar.</p>
+      <div class="text-center p-8">
+        <div class="text-3xl mb-3">⚠️</div>
+        <p style="color:#6B7280;font-size:0.875rem;">Data tidak dapat dimuat. Pastikan server berjalan dengan benar.</p>
+        <p style="color:#9CA3AF;font-size:0.75rem;margin-top:4px;">Gunakan Live Server atau python -m http.server</p>
+      </div>
     `;
     return;
   }
 
-  document.getElementById("map-loading").classList.add("hidden");
+  state.locations = locations;
+  state.filtered = locations;
+
+  // ← PERBAIKAN: Tunggu tile layer selesai loading
+  function hideLoadingWhenReady() {
+    // Check apakah tile sudah loaded
+    const tilePane = document.querySelector(".leaflet-tile-pane");
+    const tiles = document.querySelectorAll(".leaflet-tile-loaded");
+
+    if (tiles.length > 0) {
+      // Peta sudah ada, hide loading
+      document.getElementById("map-loading").classList.add("hidden");
+      document.getElementById("map").classList.remove("hidden");
+      state.map.invalidateSize();
+    } else {
+      // Peta belum done, tunggu lagi
+      setTimeout(hideLoadingWhenReady, 100);
+    }
+  }
+
+  // Mulai check setelah render marker
+  renderMarkers(locations);
+  renderList(locations);
+
+  // Trigger check
+  setTimeout(hideLoadingWhenReady, 500);
+
   document.getElementById("location-count").textContent =
     `${locations.length} lokasi`;
 
-  renderMarkers(locations);
-  renderList(locations);
   handleHash();
 
   if (state._pendingSlug) {
@@ -450,7 +519,6 @@ async function init() {
     applyFilter();
   });
 
-  // Hash changes
   window.addEventListener("hashchange", handleHash);
 }
 
