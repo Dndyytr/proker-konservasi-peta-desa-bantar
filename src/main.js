@@ -59,9 +59,10 @@ function showToast(msg, ms = 2200) {
 async function fetchLocations() {
   // Try relative path first (works on Live Server & Netlify)
   const paths = [
-    "public/data/locations.json",
-    "./public/data/locations.json",
-    "/public/data/locations.json",
+    "/data/locations.json", // Production (Netlify)
+    "data/locations.json", // Relative
+    "/public/data/locations.json", // Fallback lokal
+    "public/data/locations.json", // Fallback lokal
   ];
 
   for (const path of paths) {
@@ -72,9 +73,11 @@ async function fetchLocations() {
         if (Array.isArray(data) && data.length > 0) return data;
       }
     } catch (e) {
-      /* try next */
+      console.error(`Failed to fetch from ${path}:`, e);
     }
   }
+
+  console.warn("❌ Data tidak tersedia di semua path");
   return [];
 }
 
