@@ -1,5 +1,6 @@
 [build]
-  publish = "."
+  publish = "dist"  # Build output folder yang benar
+  command = "npm run build"
 
 [[headers]]
   for = "/public/data/*"
