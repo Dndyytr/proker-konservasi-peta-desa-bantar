@@ -30,5 +30,37 @@
     "date": "2026-07-17",
     "mapsUrl": "https://maps.google.com/?q=Stadion+Bima+Sakti+Desa+Bantar+Wanareja+Cilacap",
     "tags": ["Pasar", "Fasilitas Desa", "Perbelanjaan", "Ekonomi Lokal"]
+  },
+  {
+    "id": 3,
+    "slug": "sdn-bantar-01",
+    "name": "SDN Bantar 01",
+    "category": "Pendidikan",
+    "description": "Sekolah Dasar Negeri Bantar 01 merupakan salah satu lembaga pendidikan di Desa Bantar. Sekolah ini menyelenggarakan pendidikan dasar bagi anak-anak di wilayah desa. Program KKN Universitas Galuh mendukung pengembangan sekolah ini sebagai bagian dari upaya peningkatan kualitas pendidikan masyarakat desa.",
+    "address": "Winangun, Bantar, Kec. Wanareja, Kabupaten Cilacap, Jawa Tengah 53265",
+    "lat": -7.3611174860974184,
+    "lng": 108.70106817538199,
+    "photo": "/images/pasar_bantar.png",
+    "thumbnail": "/images/pasar_bantar.png",
+    "contributor": "Divisi Humas KKN Universitas Galuh 2026",
+    "date": "2026-07-17",
+    "mapsUrl": "https://maps.google.com/?q=Stadion+Bima+Sakti+Desa+Bantar+Wanareja+Cilacap",
+    "tags": ["Pasar", "Fasilitas Desa", "Perbelanjaan", "Ekonomi Lokal"]
+  },
+  {
+    "id": 4,
+    "slug": "pasar-bantar",
+    "name": "Pasar Bantar",
+    "category": "Perbelanjaan",
+    "description": "Pasar Bantar merupakan pusat perdagangan dan perbelanjaan utama di Desa Bantar. Pasar ini menjadi tempat berkumpulnya warga setempat untuk berbelanja kebutuhan sehari-hari, menjual hasil pertanian, dan berbagai produk lokal. Program KKN Universitas Galuh mendukung pengembangan pasar ini sebagai sarana pemberdayaan ekonomi masyarakat desa. Pasar Bantar buka hari senin dan kamis saja",
+    "address": "Winangun, Bantar, Kec. Wanareja, Kabupaten Cilacap, Jawa Tengah 53265",
+    "lat": -7.3611174860974184,
+    "lng": 108.70106817538199,
+    "photo": "/images/pasar_bantar.png",
+    "thumbnail": "/images/pasar_bantar.png",
+    "contributor": "Divisi Humas KKN Universitas Galuh 2026",
+    "date": "2026-07-17",
+    "mapsUrl": "https://maps.google.com/?q=Stadion+Bima+Sakti+Desa+Bantar+Wanareja+Cilacap",
+    "tags": ["Pasar", "Fasilitas Desa", "Perbelanjaan", "Ekonomi Lokal"]
   }
 ]

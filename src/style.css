@@ -108,17 +108,19 @@ body {
   right: 0;
   z-index: 99999999999999;
   background: rgba(255, 255, 255, 0.84);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(75, 46, 131, 0.08);
   transition: box-shadow 0.25s;
 }
 #main-header.scrolled {
-  box-shadow: 0 4px 24px rgba(75, 46, 131, 0.1);
+  box-shadow: 0 4px 24px rgba(74, 46, 131, 0.404);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .logo-icon-purple {
-  padding: 0.65rem;
+  padding: 0.3rem;
   border-radius: 9px;
   background: linear-gradient(135deg, #4b2e83, #2d1a52);
   display: flex;
@@ -128,9 +130,9 @@ body {
   box-shadow: 0 2px 8px rgba(75, 46, 131, 0.3);
 }
 .logo-icon-gold {
-  padding: 0.6rem 0.4rem;
+  padding: 0.3rem;
   border-radius: 9px;
-  background: linear-gradient(135deg, #f2c200, #e6a500);
+  background: linear-gradient(135deg, var(--gold), var(--accent));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -170,7 +172,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: linear-gradient(135deg, #f2c200, #e6b800);
+  background: linear-gradient(135deg, var(--gold), var(--accent));
   color: #1a0d35;
   font-weight: 700;
   padding: 12px 24px;
@@ -199,10 +201,10 @@ body {
   gap: 8px;
   background: transparent;
   color: rgba(255, 255, 255, 0.8);
-  font-weight: 500;
+  font-weight: 600;
   padding: 12px 22px;
   border-radius: 9px;
-  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  border: 1.7px solid rgba(255, 255, 255, 0.22);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   cursor: pointer;
@@ -326,26 +328,26 @@ body {
   color: rgba(255, 255, 255, 0.62);
   line-height: 1.75;
   max-width: 540px;
-  font-weight: 600;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 .hero-stats {
   display: flex;
-  gap: 2.5rem;
+  gap: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 .hero-stat-num {
-  font-size: 2rem;
   font-weight: 700;
   color: #f2c200;
   line-height: 1;
 }
 .hero-stat-label {
-  font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.45);
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  margin-top: 4px;
+  font-weight: 500;
 }
 
 .scroll-arrow {
@@ -791,7 +793,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f2c200, #e6b800);
+  background: linear-gradient(135deg, var(--gold), var(--accent));
   color: #1a0d35;
   border: none;
   border-radius: 7px;
@@ -1050,7 +1052,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  background: linear-gradient(135deg, #f2c200, #e6b800);
+  background: linear-gradient(135deg, var(--gold), var(--accent));
   color: #1a0d35;
   font-weight: 700;
   font-size: 0.875rem;
@@ -1254,7 +1256,7 @@ body {
   align-items: center;
   z-index: 999;
   margin-top: 1rem;
-  transition: all 0.5s ease-in-out;
+  transition: all 1s ease-in-out;
   position: relative;
   z-index: 9;
   align-self: end;
@@ -1262,20 +1264,13 @@ body {
   p {
     color: var(--gray);
     font-family: poppins, sans-serif;
-    font-size: 0.8rem;
     font-weight: 500;
     margin-top: 0.2rem;
   }
 }
 
-.mouse-scroll.mouse-hide {
-  opacity: 0;
-}
-
 .mouse {
   border-radius: 100%;
-  width: 3rem;
-  height: 3rem;
   border: 1.9px solid var(--gray);
   box-shadow: 0 0 1rem var(--gray);
   display: flex;
@@ -1284,16 +1279,12 @@ body {
 }
 
 .mouse-wheel {
-  width: 1rem;
-  height: 1.5rem;
   border: 2px solid var(--gray);
   border-radius: 8rem;
   display: flex;
   justify-content: center;
 
   .scroll {
-    width: 2.7px;
-    height: 6px;
     background-color: var(--gray);
     border-radius: 1rem;
     margin-top: 2px;
@@ -1315,3 +1306,16 @@ body {
   }
 }
 /* mouse scroll */
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}

@@ -516,6 +516,8 @@ window.closeMobileMenu = closeMobileMenu;
 function initNavbar() {
   // Header scroll effect
   const header = document.getElementById("main-header");
+  const mouseScroll = document.querySelector(".mouse-scroll");
+
   window.addEventListener(
     "scroll",
     () => {
@@ -524,6 +526,7 @@ function initNavbar() {
       document
         .getElementById("back-to-top")
         .classList.toggle("hidden", window.scrollY < 400);
+      mouseScroll.style.opacity = window.scrollY > 200 ? "0" : "1";
     },
     { passive: true },
   );
@@ -541,6 +544,21 @@ function revealMap() {
   requestAnimationFrame(() => {
     state.map.invalidateSize();
   });
+}
+
+// ── Counter Animation ──────────────────────────────────────────
+function animateCounter(el, target, duration = 1500) {
+  let current = 0;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) {
+      el.textContent = target;
+      clearInterval(timer);
+    } else {
+      el.textContent = Math.floor(current);
+    }
+  }, 16);
 }
 
 // ── Init ───────────────────────────────────────────────────────
@@ -573,9 +591,21 @@ async function init() {
 
   // Update counters
   const countEl = document.getElementById("location-count");
-  if (countEl) countEl.textContent = `${locations.length} lokasi`;
   const heroStat = document.getElementById("hero-stat-count");
-  if (heroStat) heroStat.textContent = locations.length;
+  const heroStat2 = document.getElementById("hero-stat-count-2");
+  const heroStat3 = document.getElementById("hero-stat-count-3");
+  if (heroStat || countEl) {
+    heroStat.textContent = "0";
+    heroStat2.textContent = "0";
+    heroStat3.textContent = "0";
+    setTimeout(() => animateCounter(heroStat, locations.length, 1000), 300);
+    setTimeout(() => animateCounter(countEl, locations.length, 1000), 300);
+    setTimeout(
+      () => animateCounter(heroStat2, Object.keys(CAT).length, 1000),
+      300,
+    );
+    setTimeout(() => animateCounter(heroStat3, 2026, 1000), 300);
+  }
 
   // Wait for first tile to load, then reveal map
   const checkTiles = () => {

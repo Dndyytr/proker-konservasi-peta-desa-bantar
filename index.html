@@ -32,22 +32,20 @@
         >
           <div class="flex items-center gap-1.5">
             <div class="logo-icon-purple">
-              <svg
-                class="size-3.5 bp360:size-3.75 bp575:size-4 md:size-4.25 lg:size-4.5 2xl:size-5"
-                width="100"
-                height="100"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <polygon points="3 11 22 2 13 21 11 13 3 11" />
-              </svg>
+              <img
+                src="/images/logo_unigal.png"
+                class="size-5.5 bp360:5.75 bp400:size-6 md:size-6.75 lg:size-7.75 xl:size-8 2xl:size-8.5"
+                alt="unigal"
+              />
             </div>
             <div
               class="logo-icon-gold text-xs bp360:text-[0.8rem] bp575:text-[0.85rem] md:text-[0.9rem] lg:text-[0.95rem] 2xl:text-base"
             >
-              KKN
+              <img
+                src="/images/logo_kkn_bantar.png"
+                class="size-5.5 bp360:5.75 bp400:size-6 md:size-6.75 lg:size-7.75 xl:size-8 2xl:size-8.5"
+                alt="kkn desa bantar 2026"
+              />
             </div>
           </div>
           <div class="hidden sm:block leading-tight">
@@ -243,14 +241,14 @@
             </div>
 
             <h1
-              class="hero-title text-3xl bp400:text-4xl md:text-[38px] lg:text-[40px] xl:text-5xl 2xl:text-[55px] mb-3 bp400:mb-3.5 md:mb-4 lg:mb-4.5 xl:mb-5 2xl:mb-5.5"
+              class="hero-title animate-[fadeUp_1s_ease-in-out] text-3xl bp400:text-4xl md:text-[38px] lg:text-[40px] xl:text-5xl 2xl:text-[55px] mb-3 bp400:mb-3.5 md:mb-4 lg:mb-4.5 xl:mb-5 2xl:mb-5.5"
             >
               Peta Potensi<br />
               <span class="hero-title-accent">Desa Bantar</span>
             </h1>
 
             <p
-              class="hero-sub mb-3 bp400:mb-3.5 md:mb-4 lg:mb-4.5 xl:mb-5 2xl:mb-5.5 text-xs bp360:text-[0.8rem] bp400:text-[0.85rem] md:text-[0.9rem] lg:text-[0.95rem] 2xl:text-base"
+              class="hero-sub animate-[fadeUp_1s_ease-in-out_0.5s_forwards] mb-3 bp400:mb-3.5 md:mb-4 lg:mb-4.5 xl:mb-5 2xl:mb-5.5 text-xs bp360:text-[0.8rem] bp400:text-[0.85rem] md:text-[0.9rem] lg:text-[0.95rem] 2xl:text-base"
             >
               Website pemetaan potensi Desa Bantar yang dibuat oleh mahasiswa
               KKN Universitas Galuh. Temukan berbagai lokasi penting, sumber
@@ -260,36 +258,44 @@
 
             <!-- CTA Buttons -->
             <div class="flex flex-wrap gap-3">
-              <button
-                class="btn-gold gap-2 text-[0.8rem] bp360:text-[0.85rem] bp400:text-[0.9rem] md:text-[0.95rem] lg:text-base 2xl:text-[1.2rem]"
-                onclick="scrollToMap()"
+              <div
+                class="opacity-0 animate-[fadeUp_1s_ease-in-out_0.8s_forwards]"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 640 640"
-                  class="size-4.75 bp400:size-5 md:size-5.25 lg:size-5.5 fill-current"
+                <button
+                  class="btn-gold gap-2 text-[0.8rem] bp360:text-[0.85rem] bp400:text-[0.9rem] md:text-[0.95rem] lg:text-base 2xl:text-[1.2rem]"
+                  onclick="scrollToMap()"
                 >
-                  <path
-                    d="M576 112C576 100.9 570.3 90.6 560.8 84.8C551.3 79 539.6 78.4 529.7 83.4L413.5 141.5L234.1 81.6C226 78.9 217.3 79.5 209.7 83.3L81.7 147.3C70.8 152.8 64 163.9 64 176L64 528C64 539.1 69.7 549.4 79.2 555.2C88.7 561 100.4 561.6 110.3 556.6L226.4 498.5L405.8 558.3C413.9 561 422.6 560.4 430.2 556.6L558.2 492.6C569 487.2 575.9 476.1 575.9 464L575.9 112zM256 440.9L256 156.4L384 199.1L384 483.6L256 440.9z"
-                  />
-                </svg>
-                Jelajahi Peta
-              </button>
-              <a
-                href="#tentang"
-                class="btn-outline gap-2 text-[0.8rem] bp360:text-[0.85rem] bp400:text-[0.9rem] md:text-[0.95rem] lg:text-base 2xl:text-[1.2rem]"
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 640 640"
+                    class="size-4.75 bp400:size-5 md:size-5.25 lg:size-5.5 fill-current"
+                  >
+                    <path
+                      d="M576 112C576 100.9 570.3 90.6 560.8 84.8C551.3 79 539.6 78.4 529.7 83.4L413.5 141.5L234.1 81.6C226 78.9 217.3 79.5 209.7 83.3L81.7 147.3C70.8 152.8 64 163.9 64 176L64 528C64 539.1 69.7 549.4 79.2 555.2C88.7 561 100.4 561.6 110.3 556.6L226.4 498.5L405.8 558.3C413.9 561 422.6 560.4 430.2 556.6L558.2 492.6C569 487.2 575.9 476.1 575.9 464L575.9 112zM256 440.9L256 156.4L384 199.1L384 483.6L256 440.9z"
+                    />
+                  </svg>
+                  Jelajahi Peta
+                </button>
+              </div>
+              <div
+                class="opacity-0 animate-[fadeUp_1s_ease-in-out_1s_forwards]"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 640 640"
-                  class="size-4.75 bp400:size-5 md:size-5.25 lg:size-5.5 fill-current"
+                <a
+                  href="#tentang"
+                  class="btn-outline gap-2 text-[0.8rem] bp360:text-[0.85rem] bp400:text-[0.9rem] md:text-[0.95rem] lg:text-base 2xl:text-[1.2rem]"
                 >
-                  <path
-                    d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM288 224C288 206.3 302.3 192 320 192C337.7 192 352 206.3 352 224C352 241.7 337.7 256 320 256C302.3 256 288 241.7 288 224zM280 288L328 288C341.3 288 352 298.7 352 312L352 400L360 400C373.3 400 384 410.7 384 424C384 437.3 373.3 448 360 448L280 448C266.7 448 256 437.3 256 424C256 410.7 266.7 400 280 400L304 400L304 336L280 336C266.7 336 256 325.3 256 312C256 298.7 266.7 288 280 288z"
-                  />
-                </svg>
-                Tentang Program
-              </a>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 640 640"
+                    class="size-4.75 bp400:size-5 md:size-5.25 lg:size-5.5 fill-current"
+                  >
+                    <path
+                      d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM288 224C288 206.3 302.3 192 320 192C337.7 192 352 206.3 352 224C352 241.7 337.7 256 320 256C302.3 256 288 241.7 288 224zM280 288L328 288C341.3 288 352 298.7 352 312L352 400L360 400C373.3 400 384 410.7 384 424C384 437.3 373.3 448 360 448L280 448C266.7 448 256 437.3 256 424C256 410.7 266.7 400 280 400L304 400L304 336L280 336C266.7 336 256 325.3 256 312C256 298.7 266.7 288 280 288z"
+                    />
+                  </svg>
+                  Tentang Program
+                </a>
+              </div>
             </div>
 
             <!-- Stats -->
@@ -298,28 +304,42 @@
             >
               <div>
                 <div
-                  class="hero-stat-num pt-4 bp360:pt-4.5 bp400:pt-4.75 md:pt-5 lg:pt-5.75 xl:pt-6 2xl:pt-6.75"
+                  class="hero-stat-num pt-4 bp360:pt-4.5 bp400:pt-4.75 md:pt-5 lg:pt-5.75 xl:pt-6 2xl:pt-6.75 text-3xl bp360:text-[32px] bp400:text-[34px] md:text-4xl lg:text-[38px] xl:text-[40px] 2xl:text-5xl"
                   id="hero-stat-count"
                 >
-                  7
+                  0
                 </div>
-                <div class="hero-stat-label">Lokasi Terpetakan</div>
+                <div
+                  class="hero-stat-label text-xs bp360:text-[0.8rem] bp400:text-[0.85rem] md:text-[0.9rem] lg:text-[0.95rem] 2xl:text-base"
+                >
+                  Lokasi Terpetakan
+                </div>
               </div>
               <div>
                 <div
-                  class="hero-stat-num pt-4 bp360:pt-4.5 bp400:pt-4.75 md:pt-5 lg:pt-5.75 xl:pt-6 2xl:pt-6.75"
+                  class="hero-stat-num pt-4 bp360:pt-4.5 bp400:pt-4.75 md:pt-5 lg:pt-5.75 xl:pt-6 2xl:pt-6.75 text-3xl bp360:text-[32px] bp400:text-[34px] md:text-4xl lg:text-[38px] xl:text-[40px] 2xl:text-5xl"
+                  id="hero-stat-count-2"
                 >
-                  6
+                  0
                 </div>
-                <div class="hero-stat-label">Kategori Potensi</div>
+                <div
+                  class="hero-stat-label text-xs bp360:text-[0.8rem] bp400:text-[0.85rem] md:text-[0.9rem] lg:text-[0.95rem] 2xl:text-base"
+                >
+                  Kategori Potensi
+                </div>
               </div>
               <div>
                 <div
-                  class="hero-stat-num pt-4 bp360:pt-4.5 bp400:pt-4.75 md:pt-5 lg:pt-5.75 xl:pt-6 2xl:pt-6.75"
+                  class="hero-stat-num pt-4 bp360:pt-4.5 bp400:pt-4.75 md:pt-5 lg:pt-5.75 xl:pt-6 2xl:pt-6.75 text-3xl bp360:text-[32px] bp400:text-[34px] md:text-4xl lg:text-[38px] xl:text-[40px] 2xl:text-5xl"
+                  id="hero-stat-count-3"
                 >
-                  2026
+                  0
                 </div>
-                <div class="hero-stat-label">Tahun Program</div>
+                <div
+                  class="hero-stat-label text-xs bp360:text-[0.8rem] bp400:text-[0.85rem] md:text-[0.9rem] lg:text-[0.95rem] 2xl:text-base"
+                >
+                  Tahun Program
+                </div>
               </div>
             </div>
           </div>
@@ -327,12 +347,18 @@
 
         <!-- mouse scroll -->
         <div class="mouse-scroll">
-          <div class="mouse">
-            <div class="mouse-wheel">
-              <div class="scroll"></div>
+          <div
+            class="mouse size-8.75 bp360:size-9.75 bp400:size-10.75 md:size-11.75 lg:size-12 xl:12.5 2xl:size-13"
+          >
+            <div
+              class="mouse-wheel w-3 md:w-3.5 lg:w-4 xl:w-4.5 2xl:w-5 h-5 md:h-5.5 lg:h-6 xl:h-6.5 2xl:h-7"
+            >
+              <div
+                class="scroll w-0.75 lg:w-[2.7px] xl:w-0.75 2xl:w-1 h-1 md:h-0.75 lg:h-1.5 xl:h-2 2xl:h-2.5"
+              ></div>
             </div>
           </div>
-          <p>Scroll</p>
+          <p class="lg:text-[0.8rem]">Scroll</p>
         </div>
         <!-- mouse scroll -->
       </section>
@@ -366,12 +392,17 @@
                 >
                   Menampilkan
                 </div>
-                <div
-                  class="text-2xl font-bold"
-                  style="color: var(--primary)"
-                  id="location-count"
-                >
-                  –
+                <div class="flex gap-2 items-end">
+                  <div
+                    class="text-2xl font-bold"
+                    style="color: var(--primary)"
+                    id="location-count"
+                  >
+                    0
+                  </div>
+                  <span class="text-2xl font-bold" style="color: var(--primary)"
+                    >Lokasi</span
+                  >
                 </div>
               </div>
             </div>
