@@ -21,6 +21,14 @@
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.14);
 }
 
+@theme {
+  /* breakpoints */
+  --breakpoint-bp575: 575px;
+  --breakpoint-bp400: 400px;
+  --breakpoint-bp360: 360px;
+  --breakpoint-bp1650: 1650px;
+}
+
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -56,11 +64,9 @@ body {
   cursor: pointer;
   transition: all 0.4s ease-in-out;
   padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-  /* display: none; */
+  border: transparent solid 2px;
   .bar {
     transition: all 0.4s ease-in-out;
-    width: 1.4rem;
-    height: 3px;
     background-color: #1a0d35;
     border-radius: 1rem;
   }
@@ -96,12 +102,12 @@ body {
 }
 
 #main-header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.97);
+  z-index: 99999999999999;
+  background: rgba(255, 255, 255, 0.84);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(75, 46, 131, 0.08);
@@ -130,7 +136,6 @@ body {
   justify-content: center;
   color: #1a0d35;
   font-weight: 800;
-  font-size: 0.8rem;
   box-shadow: 0 2px 8px rgba(242, 194, 0, 0.3);
 }
 
@@ -138,17 +143,23 @@ body {
   display: block;
   padding: 0.5rem 0.9rem;
   border-radius: 7px;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--gray);
   text-decoration: none;
-  transition:
-    color 0.18s,
-    background 0.18s;
+  transition: all 0.2s ease-in-out;
 }
+
+.nav-link .icon {
+  fill: var(--accent);
+}
+
 .nav-link:hover {
   color: var(--primary);
   background: rgba(75, 46, 131, 0.06);
+
+  .icon {
+    fill: #1a0d35;
+  }
 }
 
 /* ════════════════════════════════════════════════════════
@@ -172,7 +183,6 @@ body {
     transform 0.18s,
     box-shadow 0.18s;
   box-shadow: 0 4px 16px rgba(242, 194, 0, 0.32);
-  font-family: inherit;
 }
 .btn-gold:hover {
   transform: translateY(-2px);
@@ -193,6 +203,8 @@ body {
   padding: 12px 22px;
   border-radius: 9px;
   border: 1.5px solid rgba(255, 255, 255, 0.22);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   cursor: pointer;
   text-decoration: none;
   min-height: 48px;
@@ -294,19 +306,14 @@ body {
   color: #f2c200;
   padding: 5px 14px;
   border-radius: 100px;
-  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
 }
 
 .hero-title {
-  font-size: clamp(2rem, 5.5vw, 3.8rem);
   font-weight: 800;
   line-height: 1.12;
   color: white;
-  margin-bottom: 1.25rem;
 }
 .hero-title-accent {
   background: linear-gradient(90deg, #f2c200, #ff8c00);
@@ -317,18 +324,14 @@ body {
 
 .hero-sub {
   color: rgba(255, 255, 255, 0.62);
-  font-size: 1rem;
   line-height: 1.75;
   max-width: 540px;
-  margin-bottom: 2.25rem;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .hero-stats {
   display: flex;
   gap: 2.5rem;
-  margin-top: 3rem;
-  padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 .hero-stat-num {
@@ -1229,6 +1232,12 @@ body {
     padding 0.35s ease-in-out;
   opacity: 0;
   padding: 0 1rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 }
 
 #mobile-menu.open {
@@ -1236,3 +1245,73 @@ body {
   opacity: 1;
   padding: 1rem;
 }
+
+/* mouse scroll */
+.mouse-scroll {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 999;
+  margin-top: 1rem;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  z-index: 9;
+  align-self: end;
+
+  p {
+    color: var(--gray);
+    font-family: poppins, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 0.2rem;
+  }
+}
+
+.mouse-scroll.mouse-hide {
+  opacity: 0;
+}
+
+.mouse {
+  border-radius: 100%;
+  width: 3rem;
+  height: 3rem;
+  border: 1.9px solid var(--gray);
+  box-shadow: 0 0 1rem var(--gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mouse-wheel {
+  width: 1rem;
+  height: 1.5rem;
+  border: 2px solid var(--gray);
+  border-radius: 8rem;
+  display: flex;
+  justify-content: center;
+
+  .scroll {
+    width: 2.7px;
+    height: 6px;
+    background-color: var(--gray);
+    border-radius: 1rem;
+    margin-top: 2px;
+    animation: scroll 1s linear infinite;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(200%);
+    opacity: 0;
+  }
+}
+/* mouse scroll */
