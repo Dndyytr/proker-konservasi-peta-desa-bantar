@@ -20,9 +20,9 @@
     <!-- ══════════════════════════════════════════════ -->
     <!--  HEADER                                        -->
     <!-- ══════════════════════════════════════════════ -->
-    <header id="main-header">
+    <header id="main-header" class="backdrop-blur-sm">
       <div
-        class="max-w-7xl mx-auto flex items-center justify-between gap-4 px-2 bp360:px-2.5 bp400:px-3 md:px-4 lg:px-5 xl:px-6 2xl:px-7 py-2 bp360:py-2.5 bp400:py-3"
+        class="max-w-7xl mx-auto flex items-center justify-between gap-4 px-2 bp360:px-2.5 bp400:px-3 md:px-4 lg:px-5 xl:px-6 2xl:px-7 py-1 bp360:py-2 bp400:py-2.5"
       >
         <!-- Logo -->
         <a
@@ -31,10 +31,17 @@
           aria-label="Beranda"
         >
           <div class="flex items-center gap-1.5">
+            <div class="logo-icon-red">
+              <img
+                src="/logo_cilacap.png"
+                class="size-5.75 bp400:size-6 md:size-6.75 lg:size-7.75 xl:size-8 2xl:size-8.5"
+                alt="unigal"
+              />
+            </div>
             <div class="logo-icon-purple">
               <img
                 src="/images/logo_unigal.png"
-                class="size-5.5 bp360:5.75 bp400:size-6 md:size-6.75 lg:size-7.75 xl:size-8 2xl:size-8.5"
+                class="size-5.75 bp400:size-6 md:size-6.75 lg:size-7.75 xl:size-8 2xl:size-8.5"
                 alt="unigal"
               />
             </div>
@@ -43,7 +50,7 @@
             >
               <img
                 src="/images/logo_kkn_bantar.png"
-                class="size-5.5 bp360:5.75 bp400:size-6 md:size-6.75 lg:size-7.75 xl:size-8 2xl:size-8.5"
+                class="size-5.75 bp400:size-6 md:size-6.75 lg:size-7.75 xl:size-8 2xl:size-8.5"
                 alt="kkn desa bantar 2026"
               />
             </div>
@@ -221,7 +228,7 @@
       <!-- ══════════════════════════════════════════════ -->
       <section
         id="hero"
-        class="relative min-h-screen grid items-center py-4 px-2 bp360:px-2.5 bp400:px-3 md:px-4 lg:px-5 xl:px-6 2xl:px-7"
+        class="relative min-h-svh grid items-center py-4 px-2 bp360:px-2.5 bp400:px-3 md:px-4 lg:px-5 xl:px-6 2xl:px-7"
       >
         <div class="hero-noise"></div>
         <div class="hero-grid"></div>
@@ -348,17 +355,21 @@
         <!-- mouse scroll -->
         <div class="mouse-scroll">
           <div
-            class="mouse size-8.75 bp360:size-9.75 bp400:size-10.75 md:size-11.75 lg:size-12 xl:12.5 2xl:size-13"
+            class="mouse size-9.75 bp400:size-10.75 md:size-11.75 lg:size-12 xl:12.5 2xl:size-13"
           >
             <div
-              class="mouse-wheel w-3 md:w-3.5 lg:w-4 xl:w-4.5 2xl:w-5 h-5 md:h-5.5 lg:h-6 xl:h-6.5 2xl:h-7"
+              class="mouse-wheel w-3.5 md:w-3.75 lg:w-4 xl:w-4.5 2xl:w-5 h-5.5 md:h-5.75 lg:h-6 xl:h-6.5 2xl:h-7"
             >
               <div
-                class="scroll w-0.75 lg:w-[2.7px] xl:w-0.75 2xl:w-1 h-1 md:h-0.75 lg:h-1.5 xl:h-2 2xl:h-2.5"
+                class="scroll w-0.5 bp400:w-7.5 lg:w-[2.7px] xl:w-0.75 2xl:w-1 h-[3.7px] md:h-1 lg:h-1.5 xl:h-2 2xl:h-2.5"
               ></div>
             </div>
           </div>
-          <p class="lg:text-[0.8rem]">Scroll</p>
+          <p
+            class="text-[0.6rem] bp360:text-[0.65rem] bp400:text-[0.7rem] md:text-xs lg:text-[0.8rem] 2xl:text-[0.9rem]"
+          >
+            Scroll
+          </p>
         </div>
         <!-- mouse scroll -->
       </section>

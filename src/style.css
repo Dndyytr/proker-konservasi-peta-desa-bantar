@@ -108,21 +108,27 @@ body {
   right: 0;
   z-index: 99999999999999;
   background: rgba(255, 255, 255, 0.84);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(75, 46, 131, 0.08);
   transition: box-shadow 0.25s;
 }
 #main-header.scrolled {
   box-shadow: 0 4px 24px rgba(74, 46, 131, 0.404);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
 .logo-icon-purple {
   padding: 0.3rem;
   border-radius: 9px;
   background: linear-gradient(135deg, #4b2e83, #2d1a52);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 2px 8px rgba(75, 46, 131, 0.3);
+}
+.logo-icon-red {
+  padding: 0.3rem;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #ff0000, #521a1a);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -347,7 +353,7 @@ body {
   color: rgba(255, 255, 255, 0.45);
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .scroll-arrow {
