@@ -23,14 +23,34 @@ const state = {
 
 // ── Category Config ────────────────────────────────────────────
 const CAT = {
-  Pemerintahan: { color: "#4B2E83", bg: "#EDE9FF", icon: "🏛️" },
-  Perbelanjaan: { color: "#D97706", bg: "#FEF3C7", icon: "🛒" },
-  "Wisata Alam": { color: "#065F46", bg: "#D1FAE5", icon: "🌊" },
-  "Sumber Daya Alam": { color: "#0369A1", bg: "#E0F2FE", icon: "🏞️" },
-  Pertanian: { color: "#15803D", bg: "#DCFCE7", icon: "🌿" },
-  Pendidikan: { color: "#6D28D9", bg: "#EDE9FE", icon: "📚" },
-  "Fasilitas Ibadah": { color: "#B45309", bg: "#FEF3C7", icon: "🕌" },
-  "Fasilitas Umum": { color: "#1D4ED8", bg: "#DBEAFE", icon: "🏟️" },
+  Pemerintahan: {
+    color: "#4B2E83",
+    bg: "#EDE9FF",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="size-4.5 bp360:size-4.75 bp575:size-5 md:size-5.25 lg:size-5.75 xl:size-6 2xl:size-6.25 fill-current"><path d="M335.9 84.2C326.1 78.6 314 78.6 304.1 84.2L80.1 212.2C67.5 219.4 61.3 234.2 65 248.2C68.7 262.2 81.5 272 96 272L128 272L128 480L128 480L76.8 518.4C68.7 524.4 64 533.9 64 544C64 561.7 78.3 576 96 576L544 576C561.7 576 576 561.7 576 544C576 533.9 571.3 524.4 563.2 518.4L512 480L512 272L544 272C558.5 272 571.2 262.2 574.9 248.2C578.6 234.2 572.4 219.4 559.8 212.2L335.8 84.2zM464 272L464 480L400 480L400 272L464 272zM352 272L352 480L288 480L288 272L352 272zM240 272L240 480L176 480L176 272L240 272zM320 160C337.7 160 352 174.3 352 192C352 209.7 337.7 224 320 224C302.3 224 288 209.7 288 192C288 174.3 302.3 160 320 160z"/></svg>`,
+  },
+  Perbelanjaan: {
+    color: "#D97706",
+    bg: "#FEF3C7",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="size-4.5 bp360:size-4.75 bp575:size-5 md:size-5.25 lg:size-5.75 xl:size-6 2xl:size-6.25 fill-current"><path d="M24 48C10.7 48 0 58.7 0 72C0 85.3 10.7 96 24 96L69.3 96C73.2 96 76.5 98.8 77.2 102.6L129.3 388.9C135.5 423.1 165.3 448 200.1 448L456 448C469.3 448 480 437.3 480 424C480 410.7 469.3 400 456 400L200.1 400C188.5 400 178.6 391.7 176.5 380.3L171.4 352L475 352C505.8 352 532.2 330.1 537.9 299.8L568.9 133.9C572.6 114.2 557.5 96 537.4 96L124.7 96L124.3 94C119.5 67.4 96.3 48 69.2 48L24 48zM208 576C234.5 576 256 554.5 256 528C256 501.5 234.5 480 208 480C181.5 480 160 501.5 160 528C160 554.5 181.5 576 208 576zM432 576C458.5 576 480 554.5 480 528C480 501.5 458.5 480 432 480C405.5 480 384 501.5 384 528C384 554.5 405.5 576 432 576z"/></svg>`,
+  },
+  // "Wisata Alam": { color: "#065F46", bg: "#D1FAE5", icon: "🌊" },
+  // "Sumber Daya Alam": { color: "#0369A1", bg: "#E0F2FE", icon: "🏞️" },
+  // Pertanian: { color: "#15803D", bg: "#DCFCE7", icon: "🌿" },
+  Pendidikan: {
+    color: "#6D28D9",
+    bg: "#EDE9FE",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="size-4.5 bp360:size-4.75 bp575:size-5 md:size-5.25 lg:size-5.75 xl:size-6 2xl:size-6.25 fill-current"><path d="M80 259.8L289.2 345.9C299 349.9 309.4 352 320 352C330.6 352 341 349.9 350.8 345.9L593.2 246.1C602.2 242.4 608 233.7 608 224C608 214.3 602.2 205.6 593.2 201.9L350.8 102.1C341 98.1 330.6 96 320 96C309.4 96 299 98.1 289.2 102.1L46.8 201.9C37.8 205.6 32 214.3 32 224L32 520C32 533.3 42.7 544 56 544C69.3 544 80 533.3 80 520L80 259.8zM128 331.5L128 448C128 501 214 544 320 544C426 544 512 501 512 448L512 331.4L369.1 390.3C353.5 396.7 336.9 400 320 400C303.1 400 286.5 396.7 270.9 390.3L128 331.4z"/></svg>`,
+  },
+  "Fasilitas Ibadah": {
+    color: "#B45309",
+    bg: "#FEF3C7",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M174.8 224l226.4 0c43.5 0 78.8-35.3 78.8-78.8 0-25.5-12.3-49.4-33.1-64.2L297.3-25.4c-5.6-3.9-13-3.9-18.5 0L129.1 81C108.3 95.8 96 119.7 96 145.2 96 188.7 131.3 224 174.8 224zM512 512c35.3 0 64-28.7 64-64l0-224c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 48-448 0 0-48c0-17.7-14.3-32-32-32S0 206.3 0 224L0 448c0 35.3 28.7 64 64 64l448 0zM240 384c0-26.5 21.5-48 48-48s48 21.5 48 48l0 80-96 0 0-80z"/></svg>`,
+  },
+  "Fasilitas Umum": {
+    color: "#1D4ED8",
+    bg: "#DBEAFE",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-4.5 bp360:size-4.75 bp575:size-5 md:size-5.25 lg:size-5.75 xl:size-6 2xl:size-6.25 fill-current"><path d="M64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-384c0-35.3-28.7-64-64-64L64 0zM176 352l32 0c17.7 0 32 14.3 32 32l0 80-96 0 0-80c0-17.7 14.3-32 32-32zM96 112c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM240 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zM96 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zm144-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16z"/></svg>`,
+  },
 };
 
 function getCat(category) {
@@ -85,7 +105,7 @@ async function fetchLocations() {
 function initMap() {
   // Center on Desa Bantar, Wanareja, Cilacap
   state.map = L.map("map", {
-    center: [-7.363, 108.703],
+    center: [-7.366091753369489, 108.71228885877959],
     zoom: 14,
     zoomControl: false,
   });
@@ -120,7 +140,7 @@ function initMap() {
     .addTo(state.map);
 
   // Desa label
-  L.marker([-7.36, 108.7], {
+  L.marker([-7.366091753369489, 108.71228885877959], {
     icon: L.divIcon({
       html: '<div class="desa-label">Desa Bantar<small>Kec. Wanareja, Kab. Cilacap</small></div>',
       className: "",
@@ -272,7 +292,7 @@ function applyFilter() {
 
   // Update count
   const el = document.getElementById("location-count");
-  if (el) el.textContent = `${state.filtered.length} lokasi`;
+  if (el) el.textContent = state.filtered.length;
 }
 
 function buildFilters() {
@@ -286,10 +306,10 @@ function buildFilters() {
     .map((cat) => {
       const c = getCat(cat);
       const isAll = cat === "Semua";
-      return `<button class="cat-btn ${isAll ? "active" : ""}" data-cat="${cat}"
+      return `<button class="cat-btn text-xs bp360:text-[0.8rem] bp400:text-[0.85rem] md:text-[0.9rem] lg:text-[0.95rem] 2xl:text-base ${isAll ? "active" : ""}" data-cat="${cat}"
       style="${isAll ? "--cat-color:#4B2E83" : `--cat-color:${c.color}`}"
       onclick="setCategory('${cat}')">
-      ${isAll ? "🗺️ Semua" : `${c.icon} ${cat}`}
+      ${isAll ? `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="size-4.5 bp360:size-4.75 bp575:size-5 md:size-5.25 lg:size-5.75 xl:size-6 2xl:size-6.25 fill-current"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M2.43627 5.14686C2 5.64345 2 6.49488 2 8.19773V17.591C2 18.797 2 19.4 2.3146 19.854C2.62919 20.3079 3.17921 20.4986 4.27924 20.88L5.57343 21.3286C6.27436 21.5717 6.81371 21.7586 7.26633 21.879C7.5616 21.9576 7.83333 21.7258 7.83333 21.4203V6.2701C7.83333 6.02118 7.64964 5.81111 7.40837 5.74991C7.01914 5.65118 6.55127 5.48897 5.91002 5.26666C4.35676 4.72817 3.58014 4.45893 2.98922 4.73235C2.77941 4.82942 2.59116 4.97054 2.43627 5.14686Z"></path> <path d="M12.6204 3.48096L11.0844 4.54596C10.5287 4.93124 10.1215 5.2136 9.77375 5.41491C9.60895 5.51032 9.5 5.68291 9.5 5.87334V20.9203C9.5 21.2909 9.88398 21.5222 10.1962 21.3225C10.5312 21.1082 10.9149 20.8422 11.3796 20.5199L12.9156 19.4549C13.4712 19.0697 13.8785 18.7873 14.2262 18.586C14.3911 18.4906 14.5 18.318 14.5 18.1276V3.08063C14.5 2.71004 14.116 2.47866 13.8038 2.67836C13.4688 2.89271 13.0851 3.15874 12.6204 3.48096Z"></path> <path d="M19.7208 3.12093L18.4266 2.67226C17.7256 2.42923 17.1863 2.24228 16.7337 2.12187C16.4384 2.04333 16.1667 2.2751 16.1667 2.58064V17.7308C16.1667 17.9797 16.3504 18.1898 16.5916 18.251C16.9809 18.3497 17.4488 18.5119 18.09 18.7342C19.6432 19.2727 20.4199 19.542 21.0108 19.2686C21.2206 19.1715 21.4088 19.0304 21.5637 18.854C22 18.3575 22 17.506 22 15.8032V6.40988C22 5.2039 22 4.60091 21.6854 4.14695C21.3708 3.69298 20.8208 3.5023 19.7208 3.12093Z"></path> </g></svg> Semua` : `${c.icon} ${cat}`}
     </button>`;
     })
     .join("");
