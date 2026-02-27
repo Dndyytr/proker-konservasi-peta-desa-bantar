@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Peta Potensi Desa Bantar - KKN Universitas Galuh 2026"
+    />
+    <meta name="color-scheme" content="light" />
     <title>Peta Potensi Desa Bantar</title>
     <!-- favicon -->
     <link rel="icon" type="image/svg+xml" href="/logo_cilacap.png" />
@@ -361,7 +366,7 @@
               class="mouse-wheel w-3.5 md:w-3.75 lg:w-4 xl:w-4.5 2xl:w-5 h-5.5 md:h-5.75 lg:h-6 xl:h-6.5 2xl:h-7"
             >
               <div
-                class="scroll w-0.5 bp400:w-7.5 lg:w-[2.7px] xl:w-0.75 2xl:w-1 h-[3.7px] md:h-1 lg:h-1.5 xl:h-2 2xl:h-2.5"
+                class="scroll w-0.5 bp400:w-0.75 lg:w-[3.3px] xl:w-[3.5px] 2xl:w-1 h-[3.7px] md:h-1 lg:h-1.25 xl:h-1.5 2xl:h-2.5"
               ></div>
             </div>
           </div>
@@ -424,7 +429,7 @@
           </div>
 
           <!-- Search -->
-          <div class="search-wrap mb-3">
+          <div class="search-wrap mb-1.5 md:mb-2 lg:mb-2.5">
             <svg
               class="search-icon size-4.5 bp360:size-4.75 bp575:size-5 md:size-5.25 lg:size-5.75 xl:size-6 2xl:size-6.25"
               width="16"
@@ -440,7 +445,7 @@
             <input
               type="search"
               id="search-input"
-              class="pl-8 pr-2 py-1.25 bp400:py-1.5 md:py-1.75 lg:py-2 text-[0.8rem] bp360:text-[0.85rem] bp400:text-[0.9rem] md:text-[0.95rem] lg:text-base 2xl:text-[1.2rem]"
+              class="pl-8 pr-2 py-1.75 lg:py-2 text-[0.8rem] bp360:text-[0.85rem] bp400:text-[0.9rem] md:text-[0.95rem] lg:text-base 2xl:text-[1.2rem]"
               placeholder="Cari nama lokasi, kategori, atau alamat…"
               aria-label="Cari lokasi"
               autocomplete="off"
@@ -456,7 +461,7 @@
           </div>
 
           <!-- Category Filters (scrollable on mobile) -->
-          <div class="filter-scroll-wrap mb-5">
+          <div class="filter-scroll-wrap mb-5 py-2 px-2">
             <div
               id="category-filters"
               class="flex gap-2"
@@ -472,11 +477,19 @@
               <!-- Loading state -->
               <div id="map-loading" class="map-placeholder">
                 <div class="text-center">
-                  <div class="spinner mb-3"></div>
-                  <p class="text-sm font-medium" style="color: var(--gray)">
+                  <div
+                    class="spinner size-9 bp400:size-9.5 md:size-9.75 lg:size-10 xl:size-10.5 2xl:size-10.75 mb-3"
+                  ></div>
+                  <p
+                    class="text-sm bp360:text-[0.9rem] bp400:text-[0.95rem] md:text-[0.97rem] lg:text-base xl:text-[1.2rem] 2xl:text-[1.5rem] font-semibold"
+                    style="color: var(--gray)"
+                  >
                     Memuat peta…
                   </p>
-                  <p class="text-xs mt-1" style="color: #9ca3af">
+                  <p
+                    class="text-xs bp360:text-[0.8rem] bp400:text-[0.85rem] md:text-[0.9rem] lg:text-[0.95rem] 2xl:text-base font-medium mt-1"
+                    style="color: #9ca3af"
+                  >
                     Harap tunggu sebentar
                   </p>
                 </div>

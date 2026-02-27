@@ -140,16 +140,26 @@ function initMap() {
     .addTo(state.map);
 
   // Desa label
-  L.marker([-7.366091753369489, 108.71228885877959], {
+
+  const desaMarker = L.marker([-7.366091753369489, 108.71228885877959], {
     icon: L.divIcon({
-      html: '<div class="desa-label">Desa Bantar<small>Kec. Wanareja, Kab. Cilacap</small></div>',
-      className: "",
-      iconSize: [190, 42],
+      html: '<div class="desa-label size-max font-bold text-xs bp360:text-[0.8rem] bp400:text-[0.85rem] md:text-[0.9rem] lg:text-[0.95rem] 2xl:text-base">Desa Bantar<small class="font-medium">Kec. Wanareja, Kab. Cilacap</small></div>',
+      className: "desa-marker-icon",
+      // iconSize: [150, 42],
       iconAnchor: [95, 21],
     }),
     interactive: false,
     zIndexOffset: -9999,
   }).addTo(state.map);
+
+  // ✨ Klik Desa Label → Zoom ke Desa
+  document.getElementById("map").addEventListener("click", (e) => {
+    if (e.target.closest(".desa-marker-icon")) {
+      state.map.flyTo([-7.366091753369489, 108.71228885877959], 14, {
+        duration: 800,
+      });
+    }
+  });
 }
 
 function makeIcon(category) {
@@ -581,6 +591,41 @@ function animateCounter(el, target, duration = 1500) {
   }, 16);
 }
 
+function animateRandomText(element, finalText, duration = 500, fps = 30) {
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const interval = duration / fps;
+  let elapsed = 0;
+  const maxRandomChars = 5; // ✨ Limit hanya 5 karakter acak di ujung
+
+  const timer = setInterval(() => {
+    elapsed += interval;
+    const progress = Math.min(elapsed / duration, 1);
+
+    // Hitung berapa banyak karakter di ujung yang sudah "fixed"
+    const randomStartIdx = Math.max(0, finalText.length - maxRandomChars);
+    const fixedEndCount = Math.floor(maxRandomChars * progress);
+    const randomEndIdx = finalText.length - fixedEndCount;
+
+    // Karakter normal dari awal sampai mulai acak
+    let display = finalText.slice(0, randomStartIdx);
+
+    // Karakter acak di ujung (berkurang seiring progress)
+    for (let i = randomStartIdx; i < randomEndIdx; i++) {
+      display += chars[Math.floor(Math.random() * chars.length)];
+    }
+
+    // Karakter yang sudah fixed di ujung
+    display += finalText.slice(randomEndIdx);
+
+    element.textContent = display;
+    if (progress >= 1) {
+      element.textContent = finalText;
+      clearInterval(timer);
+    }
+  }, interval);
+}
+
 // ── Init ───────────────────────────────────────────────────────
 async function init() {
   initNavbar();
@@ -626,6 +671,15 @@ async function init() {
     );
     setTimeout(() => animateCounter(heroStat3, 2026, 1000), 300);
   }
+
+  // Animate hero text
+  const heroText = document.querySelectorAll(".hero-stat-label");
+  heroText.forEach((el) => {
+    // Ambil text yang sudah ada di HTML
+    const textContent = el.textContent.trim();
+    // Jalankan animasi dengan text itu
+    setTimeout(() => animateRandomText(el, textContent, 2000), 300);
+  });
 
   // Wait for first tile to load, then reveal map
   const checkTiles = () => {

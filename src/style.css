@@ -39,6 +39,7 @@ body {
   background: var(--bg);
   color: var(--dark);
   -webkit-font-smoothing: antialiased;
+  color-scheme: light;
 }
 
 /* ── Scrollbar ───────────────────────────────────────────── */
@@ -454,7 +455,6 @@ body {
    ════════════════════════════════════════════════════════ */
 .filter-scroll-wrap {
   overflow-x: auto;
-  padding-bottom: 4px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
@@ -521,8 +521,13 @@ body {
   border-radius: 14px;
   overflow: hidden;
   box-shadow: var(--shadow-md);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1.3px solid rgba(0, 0, 0, 0.183);
   display: none; /* shown by JS */
+}
+@media (min-width: 400px) {
+  #map {
+    height: 420px;
+  }
 }
 @media (min-width: 768px) {
   #map {
@@ -532,6 +537,11 @@ body {
 @media (min-width: 1024px) {
   #map {
     height: 500px;
+  }
+}
+@media (min-width: 1280px) {
+  #map {
+    height: 560px;
   }
 }
 
@@ -543,25 +553,34 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1.3px solid rgba(0, 0, 0, 0.183);
+}
+@media (min-width: 400px) {
+  #map {
+    height: 420px;
+  }
 }
 @media (min-width: 768px) {
-  .map-placeholder {
+  #map {
     height: 460px;
   }
 }
 @media (min-width: 1024px) {
-  .map-placeholder {
+  #map {
     height: 500px;
+  }
+}
+@media (min-width: 1280px) {
+  #map {
+    height: 560px;
   }
 }
 
 .map-hint {
   background: rgba(75, 46, 131, 0.06);
-  border: 1px solid rgba(75, 46, 131, 0.12);
+  border: 1.3px solid rgba(75, 46, 131, 0.12);
   border-radius: 8px;
   padding: 10px 14px;
-  font-size: 0.78rem;
   color: var(--primary);
   line-height: 1.5;
 }
@@ -1143,9 +1162,7 @@ body {
    LOADING SPINNER
    ════════════════════════════════════════════════════════ */
 .spinner {
-  width: 34px;
-  height: 34px;
-  border: 3px solid rgba(75, 46, 131, 0.15);
+  border: 5px solid rgba(75, 46, 131, 0.15);
   border-top-color: var(--primary);
   border-radius: 50%;
   animation: spin 0.75s linear infinite;
@@ -1251,7 +1268,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 999;
+  z-index: 9999;
   margin-top: 1rem;
   transition: all 1s ease-in-out;
   position: relative;
