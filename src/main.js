@@ -133,7 +133,12 @@ function initMap() {
 
   L.control
     .layers(
-      { "🗺️ Peta Jalan": osm, "🛰️ Citra Satelit": satellite },
+      {
+        [`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-3.5 bp360:size-3.75 bp575:size-4 md:size-4.5 lg:size-4.75 xl:size-5 2xl:size-5.25 fill-current"><path d="M512 48c0-11.1-5.7-21.4-15.2-27.2s-21.2-6.4-31.1-1.4L349.5 77.5 170.1 17.6c-8.1-2.7-16.8-2.1-24.4 1.7l-128 64C6.8 88.8 0 99.9 0 112L0 464c0 11.1 5.7 21.4 15.2 27.2s21.2 6.4 31.1 1.4l116.1-58.1 179.4 59.8c8.1 2.7 16.8 2.1 24.4-1.7l128-64c10.8-5.4 17.7-16.5 17.7-28.6l0-352zM192 376.9l0-284.5 128 42.7 0 284.5-128-42.7z"/></svg> Peta Jalan`]:
+          osm,
+        [`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-3.5 bp360:size-3.75 bp575:size-4 md:size-4.5 lg:size-4.75 xl:size-5 2xl:size-5.25 fill-current"><path d="M199 7c9.4-9.4 24.6-9.4 33.9 0l89.4 89.4 55-55c12.5-12.5 32.8-12.5 45.3 0l48 48c12.5 12.5 12.5 32.8 0 45.3l-55 55 89.4 89.4c9.4 9.4 9.4 24.6 0 33.9l-96 96c-9.4 9.4-24.6 9.4-33.9 0l-89.4-89.4-15.5 15.5c11.4 24.6 17.8 52 17.8 80.9 0 31.7-7.7 61.5-21.2 87.8-4.7 9-16.7 10.3-23.8 3.1l-96.3-96.3-60 60c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l60-60-96.3-96.3c-7.2-7.2-5.9-19.2 3.1-23.8 26.3-13.6 56.2-21.2 87.8-21.2 28.9 0 56.3 6.4 80.9 17.8L192.4 226.3 103 137c-9.4-9.4-9.4-24.6 0-33.9L199 7zm17 50.9l-62.1 62.1 72.4 72.4 62.1-62.1-72.4-72.4zM392 358.1l62.1-62.1-72.4-72.4-62.1 62.1 72.4 72.4z"/></svg> Citra Satelit`]:
+          satellite,
+      },
       {},
       { position: "topright", collapsed: false },
     )
@@ -211,10 +216,10 @@ function buildPopup(loc) {
     </div>
     <div class="popup-body">
       <h3>${loc.name}</h3>
-      <p>📍 ${shortAddr}</p>
+      <p class="flex gap-0.5 items-end font-medium"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-3.5 bp360:size-4 bp575:size-4.25 md:size-4.75 lg:size-5 fill-(--gray-dark)"><path d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"/></svg> ${shortAddr}</p>
       <div class="popup-btn-row">
-        <button class="popup-btn-detail" data-slug="${loc.slug}">📋 Lihat Detail</button>
-        <a href="${loc.mapsUrl}" target="_blank" rel="noopener" class="popup-btn-maps">🗺️ Maps</a>
+        <button class="popup-btn-detail" data-slug="${loc.slug}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-3.5 bp360:size-4 bp575:size-4.25 md:size-4.75 lg:size-5 fill-current"><path d="M232 96l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l80 0c13.3 0 24 10.7 24 24s-10.7 24-24 24zm0 48c37.1 0 67.6-28 71.6-64L320 80c8.8 0 16 7.2 16 16l0 352c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16L48 96c0-8.8 7.2-16 16-16l16.4 0c4 36 34.5 64 71.6 64l80 0zM291.9 32C279 12.7 257 0 232 0L152 0c-25 0-47 12.7-59.9 32L64 32C28.7 32 0 60.7 0 96L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-352c0-35.3-28.7-64-64-64l-28.1 0z"/></svg> Lihat Detail</button>
+        <a href="${loc.mapsUrl}" target="_blank" rel="noopener" class="popup-btn-maps"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-3.5 bp360:size-4 bp575:size-4.25 md:size-4.75 lg:size-5 fill-current"><path d="M512 48c0-8.3-4.3-16-11.3-20.4s-15.9-4.8-23.3-1.1L352.5 88.1 180 29.4c-13.7-4.7-28.7-3.8-41.9 2.3L13.8 90.3C5.4 94.2 0 102.7 0 112L0 464c0 8.2 4.2 15.9 11.1 20.3s15.6 4.9 23.1 1.4l127.3-59.9 170.7 56.9c13.7 4.6 28.5 3.7 41.6-2.5l124.4-58.5c8.4-4 13.8-12.4 13.8-21.7l0-352zM144 82.1l0 299-96 45.2 0-299 96-45.2zm48 303.3l0-301.1 128 43.5 0 300.3-128-42.7zM368 134l96-47.4 0 298.2-96 45.2 0-296z"/></svg> Maps</a>
       </div>
     </div>`;
 }
