@@ -27,7 +27,7 @@
     <!-- ══════════════════════════════════════════════ -->
     <header id="main-header" class="backdrop-blur-sm">
       <div
-        class="max-w-7xl mx-auto flex items-center justify-between gap-4 px-2 bp360:px-2.5 bp400:px-3 md:px-4 lg:px-5 xl:px-6 2xl:px-7 py-1 bp360:py-2"
+        class="max-w-7xl mx-auto flex items-center justify-between gap-4 px-2 bp360:px-2.5 bp400:px-3 md:px-4 lg:px-5 xl:px-6 2xl:px-7 py-0.75 bp360:py-1.75"
       >
         <!-- Logo -->
         <a
@@ -452,11 +452,19 @@
             />
             <button
               id="clear-search"
-              class="clear-search-btn hidden py-0.5 px-1.5 lg:px-1.75 text-xs bp360:text-[0.8rem] bp400:text-[0.85rem] md:text-[0.9rem] lg:text-[0.95rem] 2xl:text-base"
+              class="clear-search-btn hidden p-1"
               onclick="clearSearch()"
               aria-label="Hapus pencarian"
             >
-              ✕
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 384 512"
+                class="fill-current size-3 bp360:size-3.25 bp400:size-3.5 md:size-3.75 lg:size-4 xl:size-4.25 2xl:size-4.5"
+              >
+                <path
+                  d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z"
+                />
+              </svg>
             </button>
           </div>
 

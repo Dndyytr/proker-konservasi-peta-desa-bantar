@@ -216,7 +216,7 @@ function buildPopup(loc) {
     </div>
     <div class="popup-body">
       <h3>${loc.name}</h3>
-      <p class="flex gap-0.5 items-end font-medium"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-3.5 bp360:size-4 bp575:size-4.25 md:size-4.75 lg:size-5 fill-(--gray-dark)"><path d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"/></svg> ${shortAddr}</p>
+      <p class="flex gap-0.5 items-start font-medium"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-3.5 bp360:size-4 bp575:size-4.25 md:size-4.75 lg:size-5 fill-(--gray-dark)"><path d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"/></svg> ${shortAddr}</p>
       <div class="popup-btn-row">
         <button class="popup-btn-detail" data-slug="${loc.slug}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-3.5 bp360:size-4 bp575:size-4.25 md:size-4.75 lg:size-5 fill-current"><path d="M232 96l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l80 0c13.3 0 24 10.7 24 24s-10.7 24-24 24zm0 48c37.1 0 67.6-28 71.6-64L320 80c8.8 0 16 7.2 16 16l0 352c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16L48 96c0-8.8 7.2-16 16-16l16.4 0c4 36 34.5 64 71.6 64l80 0zM291.9 32C279 12.7 257 0 232 0L152 0c-25 0-47 12.7-59.9 32L64 32C28.7 32 0 60.7 0 96L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-352c0-35.3-28.7-64-64-64l-28.1 0z"/></svg> Lihat Detail</button>
         <a href="${loc.mapsUrl}" target="_blank" rel="noopener" class="popup-btn-maps"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-3.5 bp360:size-4 bp575:size-4.25 md:size-4.75 lg:size-5 fill-current"><path d="M512 48c0-8.3-4.3-16-11.3-20.4s-15.9-4.8-23.3-1.1L352.5 88.1 180 29.4c-13.7-4.7-28.7-3.8-41.9 2.3L13.8 90.3C5.4 94.2 0 102.7 0 112L0 464c0 8.2 4.2 15.9 11.1 20.3s15.6 4.9 23.1 1.4l127.3-59.9 170.7 56.9c13.7 4.6 28.5 3.7 41.6-2.5l124.4-58.5c8.4-4 13.8-12.4 13.8-21.7l0-352zM144 82.1l0 299-96 45.2 0-299 96-45.2zm48 303.3l0-301.1 128 43.5 0 300.3-128-42.7zM368 134l96-47.4 0 298.2-96 45.2 0-296z"/></svg> Maps</a>
@@ -368,12 +368,12 @@ function openModal(slug) {
 
   content.innerHTML = `
     <div class="modal-header">
+    <button class="modal-close-btn" onclick="closeModal()" aria-label="Tutup">✕</button>
       <div class="modal-header-inner">
         <span class="modal-cat-badge">${c.icon} ${loc.category}</span>
         <h2 class="modal-title" id="modal-title-text">${loc.name}</h2>
-        <p class="modal-addr">📍 ${loc.address}</p>
+        <p class="modal-addr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-4.5 bp360:size-4.75 md:size-5 lg:size-5.25 2xl:size-6 fill-white"><path d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"/></svg> ${loc.address}</p>
       </div>
-      <button class="modal-close-btn" onclick="closeModal()" aria-label="Tutup">✕</button>
     </div>
 
     <div class="modal-body">
@@ -387,15 +387,15 @@ function openModal(slug) {
 
       <div class="modal-meta">
         <div class="meta-item">
-          <span class="meta-label">📅 Tanggal Survei</span>
+          <span class="meta-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4.5 bp360:size-4.75 md:size-5 lg:size-5.25 2xl:size-6 fill-blue-800"><path d="M120 0c13.3 0 24 10.7 24 24l0 40 160 0 0-40c0-13.3 10.7-24 24-24s24 10.7 24 24l0 40 32 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 128C0 92.7 28.7 64 64 64l32 0 0-40c0-13.3 10.7-24 24-24zm0 112l-56 0c-8.8 0-16 7.2-16 16l0 48 352 0 0-48c0-8.8-7.2-16-16-16l-264 0zM48 224l0 192c0 8.8 7.2 16 16 16l320 0c8.8 0 16-7.2 16-16l0-192-352 0z"/></svg> Tanggal Survei</span>
           <span class="meta-value">${fmtDate(loc.date)}</span>
         </div>
         <div class="meta-item">
-          <span class="meta-label">👤 Kontributor</span>
+          <span class="meta-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4.5 bp360:size-4.75 md:size-5 lg:size-5.25 2xl:size-6 fill-(--primary)"><path d="M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240zm-29.7 56C95.8 304 16 383.8 16 482.3 16 498.7 29.3 512 45.7 512l356.6 0c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3l-59.4 0z"/></svg> Kontributor</span>
           <span class="meta-value">${loc.contributor}</span>
         </div>
         <div class="meta-item" style="grid-column:1/-1">
-          <span class="meta-label">🏷️ Tag</span>
+          <span class="meta-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-4.5 bp360:size-4.75 md:size-5 lg:size-5.25 2xl:size-6 fill-(--gold)"><path d="M32.5 96l0 149.5c0 17 6.7 33.3 18.7 45.3l192 192c25 25 65.5 25 90.5 0L483.2 333.3c25-25 25-65.5 0-90.5l-192-192C279.2 38.7 263 32 246 32L96.5 32c-35.3 0-64 28.7-64 64zm112 16a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg> Tag</span>
           <div class="tag-row">
             ${loc.tags.map((t) => `<span class="tag" style="background:${c.bg};color:${c.color}">${t}</span>`).join("")}
           </div>
@@ -403,17 +403,17 @@ function openModal(slug) {
       </div>
 
       <div class="coords-bar">
-        <span>🌐 Koordinat:</span>
-        <code>${loc.lat.toFixed(6)}, ${loc.lng.toFixed(6)}</code>
-        <button class="copy-btn" onclick="copyCoords('${loc.lat},${loc.lng}')">📋 Salin</button>
+        <span class="flex gap-1 items-center font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#42c6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe-icon lucide-globe size-4 bp360:size-4.25 bp575:size-4.75 md:size-5 lg:size-5.25 2xl:size-5.75"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> Koordinat:</span>
+        <code class="truncate">${loc.lat}, ${loc.lng}</code>
+        <button class="copy-btn" onclick="copyCoords('${loc.lat},${loc.lng}')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 bp360:size-4.25 bp575:size-4.75 md:size-5 lg:size-5.25 2xl:size-5.75"><path d="M192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-200.6c0-17.4-7.1-34.1-19.7-46.2L370.6 17.8C358.7 6.4 342.8 0 326.3 0L192 0zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-16-64 0 0 16-192 0 0-256 16 0 0-64-16 0z"/></svg> Salin</button>
       </div>
 
       <div class="modal-actions">
         <a href="${loc.mapsUrl}" target="_blank" rel="noopener" class="btn-modal-maps">
-          📍 Buka Google Maps
+          Buka Google Maps
         </a>
         <button class="btn-modal-nav" onclick="navTo(${loc.lat},${loc.lng},'${loc.slug}')">
-          🎯 Tampilkan di Peta
+          Tampilkan di Peta
         </button>
       </div>
     </div>`;
