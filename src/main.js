@@ -253,9 +253,9 @@ function renderList(locs) {
             onerror="this.src='https://placehold.co/68x58/e2e8f0/6b7280?text=📍'"/>
         </div>
         <div class="loc-card-body">
-          <span class="loc-badge" style="background:${c.bg};color:${c.color}">${c.icon} ${loc.category}</span>
-          <h3 class="loc-card-title">${loc.name}</h3>
-          <p class="loc-card-addr">📍 ${loc.address.split(",")[0]}</p>
+          <span class="loc-badge text-xs bp360:text-[0.8rem] bp400:text-[0.85rem] md:text-[0.9rem] lg:text-[0.95rem] 2xl:text-base" style="background:${c.bg};color:${c.color}">${c.icon} ${loc.category}</span>
+          <h3 class="loc-card-title text-[0.8rem] bp360:text-[0.85rem] bp400:text-[0.9rem] md:text-[0.95rem] lg:text-[1rem] 2xl:text-[1.2rem]">${loc.name}</h3>
+          <p class="loc-card-addr text-xs bp360:text-[0.8rem] bp400:text-[0.85rem] md:text-[0.9rem] lg:text-[0.95rem] 2xl:text-base"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="fill-(--gray-dark) size-3.5 bp360:size-3.75 bp575:size-4 md:size-4.25 lg:size-4.75 xl:size-5 2xl:size-5.25 self-start"><path d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"/></svg> ${loc.address.split(",")[0]}</p>
         </div>
       </article>`;
     })
@@ -387,15 +387,15 @@ function openModal(slug) {
 
       <div class="modal-meta">
         <div class="meta-item">
-          <span class="meta-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4.5 bp360:size-4.75 md:size-5 lg:size-5.25 2xl:size-6 fill-blue-800"><path d="M120 0c13.3 0 24 10.7 24 24l0 40 160 0 0-40c0-13.3 10.7-24 24-24s24 10.7 24 24l0 40 32 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 128C0 92.7 28.7 64 64 64l32 0 0-40c0-13.3 10.7-24 24-24zm0 112l-56 0c-8.8 0-16 7.2-16 16l0 48 352 0 0-48c0-8.8-7.2-16-16-16l-264 0zM48 224l0 192c0 8.8 7.2 16 16 16l320 0c8.8 0 16-7.2 16-16l0-192-352 0z"/></svg> Tanggal Survei</span>
+          <span class="meta-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 bp360:size-4.25 bp575:size-4.75 md:size-5 lg:size-5.25 2xl:size-5.75 fill-blue-800"><path d="M120 0c13.3 0 24 10.7 24 24l0 40 160 0 0-40c0-13.3 10.7-24 24-24s24 10.7 24 24l0 40 32 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 128C0 92.7 28.7 64 64 64l32 0 0-40c0-13.3 10.7-24 24-24zm0 112l-56 0c-8.8 0-16 7.2-16 16l0 48 352 0 0-48c0-8.8-7.2-16-16-16l-264 0zM48 224l0 192c0 8.8 7.2 16 16 16l320 0c8.8 0 16-7.2 16-16l0-192-352 0z"/></svg> Tanggal Survei</span>
           <span class="meta-value">${fmtDate(loc.date)}</span>
         </div>
         <div class="meta-item">
-          <span class="meta-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4.5 bp360:size-4.75 md:size-5 lg:size-5.25 2xl:size-6 fill-(--primary)"><path d="M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240zm-29.7 56C95.8 304 16 383.8 16 482.3 16 498.7 29.3 512 45.7 512l356.6 0c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3l-59.4 0z"/></svg> Kontributor</span>
+          <span class="meta-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-4 bp360:size-4.25 bp575:size-4.75 md:size-5 lg:size-5.25 2xl:size-5.75 fill-(--primary)"><path d="M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240zm-29.7 56C95.8 304 16 383.8 16 482.3 16 498.7 29.3 512 45.7 512l356.6 0c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3l-59.4 0z"/></svg> Kontributor</span>
           <span class="meta-value">${loc.contributor}</span>
         </div>
         <div class="meta-item" style="grid-column:1/-1">
-          <span class="meta-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-4.5 bp360:size-4.75 md:size-5 lg:size-5.25 2xl:size-6 fill-(--gold)"><path d="M32.5 96l0 149.5c0 17 6.7 33.3 18.7 45.3l192 192c25 25 65.5 25 90.5 0L483.2 333.3c25-25 25-65.5 0-90.5l-192-192C279.2 38.7 263 32 246 32L96.5 32c-35.3 0-64 28.7-64 64zm112 16a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg> Tag</span>
+          <span class="meta-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-4 bp360:size-4.25 bp575:size-4.75 md:size-5 lg:size-5.25 2xl:size-5.75 fill-(--gold)"><path d="M32.5 96l0 149.5c0 17 6.7 33.3 18.7 45.3l192 192c25 25 65.5 25 90.5 0L483.2 333.3c25-25 25-65.5 0-90.5l-192-192C279.2 38.7 263 32 246 32L96.5 32c-35.3 0-64 28.7-64 64zm112 16a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg> Tag</span>
           <div class="tag-row">
             ${loc.tags.map((t) => `<span class="tag" style="background:${c.bg};color:${c.color}">${t}</span>`).join("")}
           </div>
