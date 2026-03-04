@@ -641,12 +641,12 @@ body {
   background: white;
   border: 1.5px solid #f3f4f6;
   cursor: pointer;
-  transition: all 0.18s;
+  transition: all 0.2s;
   margin-bottom: 8px;
 }
 .loc-card:hover {
   border-color: rgba(75, 46, 131, 0.28);
-  box-shadow: 0 3px 14px rgba(75, 46, 131, 0.48);
+  box-shadow: 0 3px 10px rgba(75, 46, 131, 0.4);
   transform: translateX(3px);
 }
 .loc-card:focus {
@@ -656,7 +656,7 @@ body {
 .loc-card.active {
   border-color: var(--primary);
   background: rgba(75, 46, 131, 0.03);
-  box-shadow: 0 3px 14px rgba(75, 46, 131, 0.48);
+  box-shadow: 0 3px 10px rgba(75, 46, 131, 0.4);
 }
 .loc-card-thumb {
   flex-shrink: 0;
