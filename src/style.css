@@ -343,7 +343,7 @@ body {
 .hero-stats {
   display: flex;
   gap: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1.3px solid rgba(255, 255, 255, 0.3);
 }
 .hero-stat-num {
   font-weight: 700;
@@ -1342,7 +1342,7 @@ body {
   text-align: center;
   justify-content: center;
   align-items: center;
-  gap: 7px;
+  gap: 5px;
   background: linear-gradient(135deg, var(--gold), var(--accent));
   color: #1a0d35;
   font-weight: 700;
@@ -1533,7 +1533,7 @@ body {
 }
 .feature-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 15px 5px rgba(74, 46, 131, 0.132);
+  box-shadow: 0 5px 15px 3px rgba(74, 46, 131, 0.5);
   border-color: var(--primary);
 }
 .feature-icon {

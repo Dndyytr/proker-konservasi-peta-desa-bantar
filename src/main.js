@@ -228,7 +228,7 @@ function buildPopup(loc) {
       <h3>${loc.name}</h3>
       <p class="flex gap-0.5 items-start font-medium"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-3.5 bp360:size-4 bp575:size-4.25 md:size-4.75 lg:size-5 fill-(--gray-dark)"><path d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"/></svg> ${shortAddr}</p>
       <div class="popup-btn-row">
-        <button class="popup-btn-detail" data-slug="${loc.slug}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-3.5 bp360:size-4 bp575:size-4.25 md:size-4.75 lg:size-5 fill-current"><path d="M232 96l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l80 0c13.3 0 24 10.7 24 24s-10.7 24-24 24zm0 48c37.1 0 67.6-28 71.6-64L320 80c8.8 0 16 7.2 16 16l0 352c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16L48 96c0-8.8 7.2-16 16-16l16.4 0c4 36 34.5 64 71.6 64l80 0zM291.9 32C279 12.7 257 0 232 0L152 0c-25 0-47 12.7-59.9 32L64 32C28.7 32 0 60.7 0 96L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-352c0-35.3-28.7-64-64-64l-28.1 0z"/></svg> Lihat Detail</button>
+        <button class="popup-btn-detail" onclick="openModal('${loc.slug}')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-3.5 bp360:size-4 bp575:size-4.25 md:size-4.75 lg:size-5 fill-current"><path d="M232 96l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l80 0c13.3 0 24 10.7 24 24s-10.7 24-24 24zm0 48c37.1 0 67.6-28 71.6-64L320 80c8.8 0 16 7.2 16 16l0 352c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16L48 96c0-8.8 7.2-16 16-16l16.4 0c4 36 34.5 64 71.6 64l80 0zM291.9 32C279 12.7 257 0 232 0L152 0c-25 0-47 12.7-59.9 32L64 32C28.7 32 0 60.7 0 96L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-352c0-35.3-28.7-64-64-64l-28.1 0z"/></svg> Lihat Detail</button>
         <a href="${loc.mapsUrl}" target="_blank" rel="noopener" class="popup-btn-maps"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-3.5 bp360:size-4 bp575:size-4.25 md:size-4.75 lg:size-5 fill-current"><path d="M512 48c0-8.3-4.3-16-11.3-20.4s-15.9-4.8-23.3-1.1L352.5 88.1 180 29.4c-13.7-4.7-28.7-3.8-41.9 2.3L13.8 90.3C5.4 94.2 0 102.7 0 112L0 464c0 8.2 4.2 15.9 11.1 20.3s15.6 4.9 23.1 1.4l127.3-59.9 170.7 56.9c13.7 4.6 28.5 3.7 41.6-2.5l124.4-58.5c8.4-4 13.8-12.4 13.8-21.7l0-352zM144 82.1l0 299-96 45.2 0-299 96-45.2zm48 303.3l0-301.1 128 43.5 0 300.3-128-42.7zM368 134l96-47.4 0 298.2-96 45.2 0-296z"/></svg> Maps</a>
       </div>
     </div>`;
@@ -369,6 +369,18 @@ window.clearSearch = function () {
 
 // ── Modal ──────────────────────────────────────────────────────
 function openModal(slug) {
+  // Batalkan closeModal() yang mungkin masih berjalan
+  if (closeModalTimer) {
+    clearTimeout(closeModalTimer);
+    closeModalTimer = null;
+    // Reset state modal ke kondisi bersih
+    const modal = document.getElementById("detail-modal");
+    const box = modal.querySelector(".modal-box");
+    modal.classList.remove("hidden");
+    box.classList.remove("leave");
+    document.body.style.overflow = "";
+  }
+
   const loc = state.locations.find((l) => l.slug === slug);
   if (!loc) return;
 
@@ -420,9 +432,10 @@ function openModal(slug) {
 
       <div class="modal-actions">
         <a href="${loc.mapsUrl}" target="_blank" rel="noopener" class="btn-modal-maps">
-          Buka Google Maps
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-4 bp360:size-4.5 md:size-4.25 lg:size-4.75 2xl:size-5 fill-current"><path d="M500 261.8C500 403.3 403.1 504 260 504 122.8 504 12 393.2 12 256S122.8 8 260 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9c-88.3-85.2-252.5-21.2-252.5 118.2 0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9l-140.8 0 0-85.3 236.1 0c2.3 12.7 3.9 24.9 3.9 41.4z"/></svg> Buka Google Maps
         </a>
         <button class="btn-modal-nav" onclick="navTo(${loc.lat},${loc.lng},'${loc.slug}')">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="size-4.5 bp360:size-4.75 md:size-5 lg:size-5.25 2xl:size-5.5 fill-current"><path d="M288-16c17.7 0 32 14.3 32 32l0 18.3c98.1 14 175.7 91.6 189.7 189.7l18.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-18.3 0c-14 98.1-91.6 175.7-189.7 189.7l0 18.3c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-18.3C157.9 463.7 80.3 386.1 66.3 288L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l18.3 0C80.3 125.9 157.9 48.3 256 34.3L256 16c0-17.7 14.3-32 32-32zM131.2 288c12.7 62.7 62.1 112.1 124.8 124.8l0-12.8c0-17.7 14.3-32 32-32s32 14.3 32 32l0 12.8c62.7-12.7 112.1-62.1 124.8-124.8L432 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l12.8 0C432.1 161.3 382.7 111.9 320 99.2l0 12.8c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-12.8C193.3 111.9 143.9 161.3 131.2 224l12.8 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-12.8 0zM288 208a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
           Tampilkan di Peta
         </button>
       </div>
@@ -438,12 +451,15 @@ function openModal(slug) {
   document.body.style.overflow = "hidden";
 }
 
+// Simpan referensi timer closeModal agar bisa dibatalkan
+let closeModalTimer = null;
+
 function closeModal() {
   const modal = document.getElementById("detail-modal");
   const box = modal.querySelector(".modal-box");
   box.classList.remove("enter");
   box.classList.add("leave");
-  setTimeout(() => {
+  closeModalTimer = setTimeout(() => {
     modal.classList.remove("open");
     modal.classList.add("hidden");
     box.classList.remove("leave");
@@ -469,11 +485,11 @@ window.navTo = function (lat, lng, slug) {
   closeModal();
   setTimeout(() => {
     state.map.flyTo([lat, lng], 17, { duration: 1 });
+    document.getElementById("peta").scrollIntoView({ behavior: "smooth" });
     setTimeout(() => {
       if (state.markers[slug]) state.markers[slug].openPopup();
     }, 1200);
-    document.getElementById("peta").scrollIntoView({ behavior: "smooth" });
-  }, 250);
+  }, 280);
 };
 
 // ── Backdrop close ─────────────────────────────────────────────
