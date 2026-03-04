@@ -103,7 +103,7 @@ body {
 }
 
 #main-header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -257,8 +257,8 @@ body {
     145deg,
     #2d1a52 0%,
     #1a0d35 45%,
-    #0d0618 80%,
-    #1a1008 100%
+    #200f3b 80%,
+    #392311 100%
   );
   position: relative;
   overflow: hidden;
@@ -1535,7 +1535,6 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 8px 15px 5px rgba(74, 46, 131, 0.132);
   border-color: var(--primary);
-  background: rgba(255, 176, 127, 0.148);
 }
 .feature-icon {
   padding: 0.5rem 0.7rem;
@@ -1617,14 +1616,12 @@ body {
   bottom: 22px;
   right: 18px;
   z-index: 999999999;
-  width: 44px;
-  height: 44px;
   background: var(--primary);
   color: white;
   border: none;
   border-radius: 50%;
-  font-size: 18px;
-  font-weight: 700;
+  padding: 0.8rem;
+  font-weight: bold;
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(75, 46, 131, 0.35);
   transition:
