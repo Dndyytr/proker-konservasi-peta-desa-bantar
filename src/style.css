@@ -343,7 +343,7 @@ body {
 .hero-stats {
   display: flex;
   gap: 2rem;
-  border-top: 1.3px solid rgba(255, 255, 255, 0.3);
+  border-top: 1.2px solid rgba(255, 255, 255, 0.15);
 }
 .hero-stat-num {
   font-weight: 700;
@@ -646,7 +646,7 @@ body {
 }
 .loc-card:hover {
   border-color: rgba(75, 46, 131, 0.28);
-  box-shadow: 0 3px 14px rgba(75, 46, 131, 0.08);
+  box-shadow: 0 3px 14px rgba(75, 46, 131, 0.48);
   transform: translateX(3px);
 }
 .loc-card:focus {
@@ -656,7 +656,7 @@ body {
 .loc-card.active {
   border-color: var(--primary);
   background: rgba(75, 46, 131, 0.03);
-  box-shadow: 0 3px 14px rgba(75, 46, 131, 0.1);
+  box-shadow: 0 3px 14px rgba(75, 46, 131, 0.48);
 }
 .loc-card-thumb {
   flex-shrink: 0;
